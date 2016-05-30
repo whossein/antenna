@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>anntena</title>
+	<script type="text/javascript" src="jQuery-2.1.4.min.js"></script>
+	<style>
+			#signal-strength {
+		  	float: left;
+			height: 20px;
+			list-style: none;
+			overflow: hidden;
+			-webkit-margin-before: 0em;
+			-webkit-margin-after: 0em;
+			-webkit-margin-start: 0px;
+			-webkit-margin-end: 0px;
+			-webkit-padding-start: 0px;
+		}
+		#signal-strength li {
+		  display: inline-block;
+		  width: 5px;
+		  float: left;
+		  height: 100%;
+		  margin-right: 1px;
+		}
+		#signal-strength li.pretty-strong {
+		  padding-top: 0px;
+		}
+		#signal-strength li.strong {
+		  padding-top: 5px;
+		}
+		#signal-strength li.weak {
+		  padding-top: 10px;
+		}
+		#signal-strength li.very-weak {
+		  padding-top: 15px;
+		}
+		#signal-strength li div {
+		  height: 100%;
+		  background-color: #13A92C;
+		}
+		
+		
+			/*#7474AE*/
+		
+		
+		#er {
+			width: 100px;
+			height: auto;
+		}
+
+	</style>
+</head>
+<body >
+	
+	<div>
+		<span >
+			<img src="signalNoT.png" style="    height: 20px;    float: left;">
+		</span>
+		
+		<ul id="signal-strength">
+			<li class="very-weak" ><div id="sig1"></div></li>
+			<li class="weak"  ><div id="sig2" ></div></li>
+			<li class="strong"  ><div id="sig3"></div></li>
+			<li class="pretty-strong"  ><div id="sig4"></div></li>
+		</ul>
+	</div>	
+	<br>
+	<select onChange="plan(this)">
+		<option> Pls Select! </option>
+		<option >1</option>
+		<option >2</option>
+		<option >3</option>
+		<option >4</option>
+	</select>
+
+
+<script type="text/javascript">	
+	
+	function sig(s){
+		
+		for(var i=4;i>0;i--){
+			document.getElementById('sig'+i).style.backgroundColor="#13A92C";
+		}
+		
+		for(var i = 4; i > s ; i--)
+		{
+			document.getElementById('sig'+i).style.backgroundColor="#9FD1A7";
+		}	
+		
+	}
+	
+	var ite
+	
+	function plan(selectobj){
+		
+		 var selectIndex = selectobj.selectedIndex;
+		sig(selectIndex);
+		
+	}
+	
+/*	function loadDoc1() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+		    document.getElementById("dataSpan").innerHTML = xhttp.responseText;
+		    setTimeout(function(){ loadResponse(); }, 25000);
+
+
+		    }
+		  };
+		  xhttp.open("GET", "../../AjaxReq?type=SendReg", true);
+		  xhttp.send();
+		}
+
+		function loadResponse() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+		    document.getElementById("dataSpan").innerHTML = xhttp.responseText;
+		    }
+		  };
+		  xhttp.open("GET", "../../AjaxReq?type=ResponseSendReg", true);
+		  xhttp.send();
+		}
+
+		setInterval(function () {gsm();},15000); 
+
+		function gsm() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (xhttp.readyState == 4 && xhttp.status == 200) {
+		    
+		    var ite=xhttp.responseText.split(',');
+		    if(ite.length>1){				
+				
+        	$('#GsmAnt').css({"display": "block"});
+				
+				document.getElementById("GsmAnt").style.display = "block";
+				
+				document.getElementById("GsmAnt").innerHTML = '	<ul id="signal-strength"><li class="very-weak" id="sig1"><div></div></li><li class="weak"  id="sig2" ><div></div></li><li class="strong"  id="sig3"><div></div></li><li class="pretty-strong"  id="sig4"><div></div></li></ul>';
+				
+				
+				
+				
+				$('#sig3').css({"display": "block"});
+				$('#sig4').css({"display": "block"});
+			}else {
+				$('#signal-strength').html('<img src="error.png" width="250" height="250" id="er"> ')
+		    }
+		  };
+		  xhttp.open("GET", "../../AjaxReq?type=GSM", true);
+		  xhttp.send();}
+	
+		}
+
+	*/
+	
+	
+</script>
+</body>
+</html>
